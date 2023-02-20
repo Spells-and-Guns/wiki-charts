@@ -1,0 +1,18 @@
+apiVersion: caching.ibm.com/v1alpha1
+kind: VarnishCluster
+metadata:
+  labels:
+    operator: varnish
+  name: varnish-mediawiki
+  labels:
+    {{- include "sag-wiki.labels" . | nindent 4 }}
+spec:
+  vcl:
+    configMapName: vcl-config
+    entrypointFileName: entrypoint.vcl
+  backend:
+    selector:
+      app.kubernetes.io/name: mediawiki
+    port: http
+  service:
+    port: 80

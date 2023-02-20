@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "sag-wiki.fullname" . }}
+  labels:
+    {{- include "sag-wiki.labels" . | nindent 4 }}
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - "{{ .Values.mediawiki.mediawikiHost }}"
+    secretName: {{ include "sag-wiki.fullname" . }}-tls
+  rules:
+  - host: "{{ .Values.mediawiki.mediawikiHost }}"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: varnish-mediawiki
+            port:
+              number: 80

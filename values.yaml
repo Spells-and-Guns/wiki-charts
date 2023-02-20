@@ -1,0 +1,55 @@
+# Default values for sag-wiki.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+nameOverride: ""
+fullnameOverride: ""
+
+analyticsToken: "G-9D0E95N2SG"
+
+s3:
+  region: "us-east-1"
+  bucket: "spellsandguns"
+  domain: "cdn.spellsandguns.com"
+
+mediawiki:
+  image:
+    repository: berkayoz/mediawiki
+    tag: "1.39.1"
+  mediawikiUser: sag
+  mediawikiPassword: "SpellsAndGuns!"
+  mediawikiEmail: admin@espellsandguns.com
+  mediawikiName: Spells and Guns Staging
+  mediawikiHost: "staging.test.therefugestudios.com"
+  extraEnvVars:
+  - name: PHP_ENABLE_OPCACHE
+    value: "1"
+  extraEnvVarsSecret: "mediawiki-secret"
+  extraVolumes:
+  - name: local-settings
+    configMap:
+      name: wiki-local-settings
+  - name: composer-settings
+    configMap:
+      name: wiki-composer-settings
+  extraVolumeMounts:
+    - name: local-settings
+      mountPath: /bitnami/mediawiki/LocalSettings.php
+      subPath: LocalSettings.php
+    - name: composer-settings
+      mountPath: /opt/bitnami/mediawiki/composer.local.json
+      subPath: composer.local.json
+  persistence:
+    enabled: true
+    existingClaim: "staging-wiki-common"
+  mariadb:
+    enabled: false
+  externalDatabase:
+    existingSecret: "mediawiki-secret"
+    host: "mariadb-primary.mariadb.svc.cluster.local"
+    port: 3306
+    user: sag_staging
+    database: sag_staging
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
