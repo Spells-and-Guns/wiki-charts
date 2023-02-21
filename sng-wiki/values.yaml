@@ -4,7 +4,7 @@
 nameOverride: ""
 fullnameOverride: ""
 
-analyticsToken: "G-9D0E95N2SG"
+analyticsToken: ""
 
 s3:
   region: "us-east-1"
