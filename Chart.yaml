@@ -1,6 +1,15 @@
 apiVersion: v2
-name: sag-wiki
-description: A Helm chart for Kubernetes
+name: sng-wiki
+description: "A Helm chart for Spells and Guns wiki"
+home: https://github.com/Spells-and-Guns/wiki-chart
+
+sources:
+  - https://github.com/Spells-and-Guns/wiki-chart
+
+maintainers:
+  - name: berkayoz
+    url: https://github.com/berkayoz
+
 
 # A chart can be either an 'application' or a 'library' chart.
 #
