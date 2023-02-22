@@ -40,7 +40,7 @@ mediawiki:
       subPath: composer.local.json
   persistence:
     enabled: true
-    existingClaim: "staging-wiki-common"
+    existingClaim: "wiki-common-pvc"
   mariadb:
     enabled: false
   externalDatabase:
