@@ -3,6 +3,26 @@ entries:
   sng-wiki:
   - apiVersion: v2
     appVersion: "1.39"
+    created: "2023-02-22T00:07:24.664189604Z"
+    dependencies:
+    - name: mediawiki
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.3.14
+    description: A Helm chart for Spells and Guns wiki
+    digest: 9b6995f65360b5705af32256c85e4b6e63be15bbecc6d50503f2fb40b6b0d16d
+    home: https://github.com/Spells-and-Guns/wiki-chart
+    maintainers:
+    - name: berkayoz
+      url: https://github.com/berkayoz
+    name: sng-wiki
+    sources:
+    - https://github.com/Spells-and-Guns/wiki-chart
+    type: application
+    urls:
+    - https://github.com/Spells-and-Guns/wiki-charts/releases/download/sng-wiki-0.1.3/sng-wiki-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: "1.39"
     created: "2023-02-21T22:24:48.368204985Z"
     dependencies:
     - name: mediawiki
@@ -41,4 +61,4 @@ entries:
     urls:
     - https://github.com/Spells-and-Guns/wiki-charts/releases/download/sng-wiki-0.1.1/sng-wiki-0.1.1.tgz
     version: 0.1.1
-generated: "2023-02-21T22:24:48.368215586Z"
+generated: "2023-02-22T00:07:24.664380622Z"
