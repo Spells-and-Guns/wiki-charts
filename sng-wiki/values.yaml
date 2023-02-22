@@ -15,6 +15,8 @@ mediawiki:
   image:
     repository: berkayoz/mediawiki
     tag: "1.39.1"
+  service:
+    type: ClusterIP
   mediawikiUser: sag
   mediawikiPassword: "SpellsAndGuns!"
   mediawikiEmail: admin@espellsandguns.com
