@@ -1,11 +1,12 @@
 apiVersion: caching.ibm.com/v1alpha1
 kind: VarnishCluster
 metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
   labels:
     operator: varnish
-  name: varnish-mediawiki
-  labels:
     {{- include "sag-wiki.labels" . | nindent 4 }}
+  name: varnish-mediawiki
 spec:
   vcl:
     configMapName: vcl-config
