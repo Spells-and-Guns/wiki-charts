@@ -187,7 +187,7 @@ data:
     $wgGroupPermissions['autoconfirmed']['editsemiprotected'] = false;
 
     $wgEnableWriteAPI = true; // Enable the API
-    $wgArticlePath = "/wiki/$1";
+    $wgArticlePath = "/$1";
     $wgUsePathInfo = true; 
     $wgGenerateThumbnailOnParse = true;
 
