@@ -1,0 +1,39 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    {{- include "sag-wiki.labels" . | nindent 4 }}
+  name: varnish-mediawiki-varnish-clusterrole-{{ .Release.Name }}
+rules:
+  - apiGroups:
+      - ''
+    resources:
+      - nodes
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - ''
+    resources:
+      - pods
+    verbs:
+      - list
+      - watch
+      - get
+      - update
+  - apiGroups:
+      - caching.ibm.com
+    resources:
+      - varnishclusters
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - ''
+    resources:
+      - secrets
+      - configmaps
+    verbs:
+      - list
+      - get
+      - watch

@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    {{- include "sag-wiki.labels" . | nindent 4 }}
+  name: varnish-mediawiki-varnish-clusterrolebinding-{{ .Release.Name }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: varnish-mediawiki-varnish-clusterrole-{{ .Release.Name }}
+subjects:
+  - kind: ServiceAccount
+    name: varnish-mediawiki-varnish-serviceaccount
+    namespace: "{{ .Release.Namespace }}"
