@@ -22,6 +22,8 @@ mediawiki:
   mediawikiEmail: admin@espellsandguns.com
   mediawikiName: Spells and Guns Staging
   mediawikiHost: "staging.test.therefugestudios.com"
+  defaultSkin: "vector"
+  customSkin: "Vector"
   extraEnvVars:
   - name: PHP_ENABLE_OPCACHE
     value: "1"
