@@ -237,6 +237,15 @@ data:
     $wgGroupPermissions['translator']['skipcaptcha'] = true; // Bug 34182: needed with ConfirmEdit
     $wgTranslateDocumentationLanguageCode = 'qqq';
 
+    $wgHooks['TranslatePostInitGroups'][] = function ( &$list, &$deps, &$autoload ) {
+        $id = 'wiki-sidebar';
+        $mg = new WikiMessageGroup( $id, 'sidebar-messages' );
+        $mg->setLabel( 'Sidebar' );
+        $mg->setDescription( 'Messages used in the sidebar of this wiki.' );
+        $list[$id] = $mg;
+        return true;
+    };
+
     # Add this if you want to enable access to page translation
     $wgGroupPermissions['sysop']['pagetranslation'] = true;
 
